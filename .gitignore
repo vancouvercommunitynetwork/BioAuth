@@ -12,4 +12,3 @@ packages/server/data/
 *.crt
 .vite/
 coverage/
-.claude
