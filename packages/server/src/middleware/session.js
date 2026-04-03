@@ -1,24 +1,25 @@
 import session from 'express-session';
-import connectSqlite3 from 'connect-sqlite3';
+import BetterSqlite3Store from 'better-sqlite3-session-store';
+import Database from 'better-sqlite3';
 import path from 'node:path';
 import { config } from '../config.js';
 import { ensureDir } from '../utils/fs.js';
 
-// Create class to store session data in SQLite
-const SQLiteStore = connectSqlite3(session);
+const SqliteStore = BetterSqlite3Store(session);
 
 // Ensure /data directory exists
 const sessionDir = path.dirname(config.dbPath);
-ensureDir(path.join(sessionDir, 'sessions.sqlite'));
+const sessionDbPath = path.join(sessionDir, 'sessions.sqlite');
+ensureDir(sessionDbPath);
 
-// Init instance
-const store = new SQLiteStore({
-  db: 'sessions.sqlite',
-  dir: sessionDir,
-});
+const db = new Database(sessionDbPath);
 
-store.on('error', (err) => {
-  console.error('[session store] SQLite error:', err);
+const store = new SqliteStore({
+  client: db,
+  expired: {
+    clear: true,
+    intervalMs: 15 * 60 * 1000, // clear expired sessions every 15 minutes
+  },
 });
 
 // Configuration for middleware function
