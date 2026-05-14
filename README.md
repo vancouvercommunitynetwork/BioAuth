@@ -9,6 +9,7 @@ A demo web app showcasing [WebAuthn](https://webauthn.io/) biometric authenticat
 - **npm workspaces** monorepo
 
 ## Quick Start (no Dev Container)
+### Start Program
 
 ```bash
 npm install
@@ -24,10 +25,23 @@ npm run dev
 npm install
 npm run dev
 ```
+## Quick Start (Dev Container)
+### Start Program
+1. Open project in VS code and click "Reopen in Container" on the pop-up message
+2. Inside VS code terminal, run:
+```bash
+npm run dev
+```
+
+### Run Tests
+Inside VS Code terminal:
+```bash
+npm test
+```
 
 ## Usage
 
-1. Open `https://localhost:5173`
+1. Open `https://localhost:5173` (dev container may port forward to 5174)
 2. Click **Register** and enter a username
 3. Browser prompts for your biometric (fingerprint/Face ID/PIN)
 4. After registration you're redirected to the Dashboard
