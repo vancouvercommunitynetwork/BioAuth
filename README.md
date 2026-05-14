@@ -8,9 +8,7 @@ A demo web app showcasing [WebAuthn](https://webauthn.io/) biometric authenticat
 - **SQLite** via `better-sqlite3` for persistence
 - **npm workspaces** monorepo
 
-## No Dev Container
-
-### Quick Start (no Dev Container)
+## Quick Start (no Dev Container)
 
 ```bash
 npm install
@@ -25,28 +23,6 @@ npm run dev
 ```bash
 npm install
 npm run dev
-```
-
-## Dev Container
-
-### Quick Start (Dev Container)
-
-1. Open the repo in VS Code and click **Reopen in Container** from pop-up message
-2. Wait for `npm install` to finish.
-3. In the container's terminal (inside VS code):
-
-   ```bash
-   npm run dev
-   ```
-
-4. VS Code will forward port `5173` and open `https://localhost:5173` in the browser. Accept the self-signed certificate once.
-
-### Run Tests (Dev Container)
-
-In the container's integrated terminal:
-
-```bash
-npm run test
 ```
 
 ## Usage
