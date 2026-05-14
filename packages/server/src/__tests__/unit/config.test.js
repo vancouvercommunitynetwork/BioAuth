@@ -29,10 +29,11 @@ describe('config', () => {
     }
   });
 
-  // Without an RP_ORIGIN env var the server should default to the Vite dev origin
+  // Without an RP_ORIGIN env var the server should default to the Vite dev origins
+  // (both the canonical port and the dev-container forwarded fallback)
   it('uses default rpOrigin when RP_ORIGIN is not set', () => {
     if (!process.env['RP_ORIGIN']) {
-      expect(config.rpOrigin).toBe('https://localhost:5173');
+      expect(config.rpOrigin).toEqual(['https://localhost:5173', 'https://localhost:5174']);
     }
   });
 

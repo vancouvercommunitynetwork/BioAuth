@@ -28,11 +28,24 @@ function getSessionSecret() {
   return 'dev-' + randomBytes(32).toString('hex');
 }
 
+// Parse RP_ORIGIN as a comma-separated list so dev-container port forwarding
+// (e.g. 5173 -> 5174) doesn't break WebAuthn's exact-origin check.
+function parseRpOrigins() {
+  const raw = process.env['RP_ORIGIN'];
+  if (!raw) {
+    return ['https://localhost:5173', 'https://localhost:5174'];
+  }
+  return raw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 export const config = Object.freeze({
   port: parseInt(process.env['PORT'] ?? '3001', 10),
   rpId: process.env['RP_ID'] ?? 'localhost',
   rpName: process.env['RP_NAME'] ?? 'Biometric Login Showcase',
-  rpOrigin: process.env['RP_ORIGIN'] ?? 'https://localhost:5173',
+  rpOrigin: parseRpOrigins(),
   sessionSecret: getSessionSecret(),
   dbPath: process.env['DB_PATH'] ?? path.join(__dirname, '..', 'data', 'app.sqlite'),
   nodeEnv: process.env['NODE_ENV'] ?? 'development',

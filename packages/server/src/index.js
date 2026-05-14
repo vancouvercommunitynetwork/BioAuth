@@ -39,7 +39,7 @@ app.use(errorHandler);
 app.listen(config.port, () => {
   console.log(`Server running on http://localhost:${config.port}`);
   console.log(`RP ID: ${config.rpId}`);
-  console.log(`RP Origin: ${config.rpOrigin}`);
+  console.log(`RP Origin: ${config.rpOrigin.join(', ')}`);
 });
 
 export { app };
