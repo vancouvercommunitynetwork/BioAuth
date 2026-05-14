@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@simplewebauthn/server": "*",
-    "better-sqlite3": "*",
+    "better-sqlite3": "^12.0.0",
     "better-sqlite3-session-store": "*",
     "cors": "*",
     "express": "*",

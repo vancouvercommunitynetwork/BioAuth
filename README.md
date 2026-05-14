@@ -41,7 +41,7 @@ npm test
 
 ## Usage
 
-1. Open `https://localhost:5173` (dev container may port forward to 5174)
+1. Open `https://localhost:5173` (dev container may port forward to 5174) (can take about 30 seconds for app to spin up)
 2. Click **Register** and enter a username
 3. Browser prompts for your biometric (fingerprint/Face ID/PIN)
 4. After registration you're redirected to the Dashboard
